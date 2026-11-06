@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Lumea</title>
+<style>
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:#f7f9fc;color:#121a26;font:18px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;padding:16px}
+main{text-align:center;display:grid;gap:12px}
+b{color:#1d4ed8;font:700 34px Georgia,"Times New Roman",serif}
+a{color:#1d4ed8;font-weight:700}
+@media (prefers-color-scheme:dark){body{background:#0d141c;color:#ebeff3}b,a{color:#8fb0ff}}
+</style>
+</head>
+<body>
+<main>
+<b>Lumea</b>
+<p id="msg">Abrindo o painel...</p>
+<p><a id="ir" href="https://rare-laptop-ranking-excuse.trycloudflare.com">Se não abrir sozinho, toque aqui</a></p>
+</main>
+<script>
+(function () {
+  var reserva = "https://rare-laptop-ranking-excuse.trycloudflare.com";
+  function abrir(u) { document.getElementById("ir").href = u; location.replace(u); }
+  // Busca o link mais novo direto no GitHub (sem esperar a pagininha ser atualizada).
+  fetch("https://api.github.com/repos/stellathomaz36-prog/acesso-lumea/contents/link.json", { cache: "no-store", headers: { Accept: "application/vnd.github.raw+json" } })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (j) { abrir(j && j.link ? j.link : reserva); })
+    .catch(function () { abrir(reserva); });
+})();
+</script>
+</body>
+</html>
